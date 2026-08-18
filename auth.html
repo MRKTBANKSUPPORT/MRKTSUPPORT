@@ -5,28 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Авторизация — MRKT BANK</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
-        body { background: #f4f7fc; min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        body {
+            background: #0b0e17;
+            color: #e4e8f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         .auth-container {
             max-width: 420px;
             width: 100%;
-            background: white;
+            background: #121826;
             padding: 40px 35px;
             border-radius: 24px;
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            border: 1px solid #1e2538;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
-        .auth-container h2 { text-align: center; color: #0a1e3c; margin-bottom: 30px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 6px; color: #333; }
+        .auth-container h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .auth-container h2 span {
+            color: #6c8cff;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 6px;
+            color: #a8b2d4;
+        }
         .form-group input {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
+            padding: 14px 16px;
+            background: #1a2132;
+            border: 1px solid #2a3148;
+            border-radius: 12px;
+            color: #fff;
             font-size: 1rem;
             transition: 0.2s;
         }
-        .form-group input:focus { border-color: #0a1e3c; outline: none; }
+        .form-group input:focus {
+            border-color: #6c8cff;
+            outline: none;
+            background: #1e2538;
+        }
+        .form-group input::placeholder {
+            color: #4a5370;
+        }
         .btn {
             width: 100%;
             padding: 14px;
@@ -36,26 +72,66 @@
             font-weight: 600;
             cursor: pointer;
             transition: 0.2s;
-            color: white;
+            color: #fff;
         }
-        .btn-primary { background: #0a1e3c; }
-        .btn-primary:hover { background: #1a3a6a; }
-        .btn-success { background: #28a745; }
-        .btn-success:hover { background: #218838; }
-        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        #code-field { display: none; margin-top: 15px; }
-        #message { margin-top: 18px; font-weight: 600; text-align: center; }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #0a1e3c; text-decoration: none; font-size: 0.9rem; }
-        .back-link:hover { text-decoration: underline; }
-        .note { font-size: 13px; color: #888; text-align: center; margin-top: 18px; }
-        .success { color: #28a745; }
-        .error { color: #dc3545; }
+        .btn-primary {
+            background: #6c8cff;
+        }
+        .btn-primary:hover {
+            background: #5a78e6;
+        }
+        .btn-success {
+            background: #2ea85e;
+        }
+        .btn-success:hover {
+            background: #24984f;
+        }
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        #code-field {
+            display: none;
+            margin-top: 15px;
+        }
+        #message {
+            margin-top: 18px;
+            font-weight: 500;
+            text-align: center;
+            padding: 8px;
+            border-radius: 8px;
+        }
+        .success {
+            color: #2ea85e;
+            background: rgba(46, 168, 94, 0.08);
+        }
+        .error {
+            color: #f87171;
+            background: rgba(248, 113, 113, 0.08);
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #6a7394;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .back-link:hover {
+            color: #a8b2d4;
+        }
+        .note {
+            font-size: 13px;
+            color: #4a5370;
+            text-align: center;
+            margin-top: 18px;
+        }
     </style>
 </head>
 <body>
 
 <div class="auth-container">
-    <h2>🔐 Вход в MRKT BANK</h2>
+    <h2>🔐 Вход в <span>MRKT</span></h2>
 
     <form id="auth-form">
         <div class="form-group">
@@ -68,7 +144,7 @@
         </button>
 
         <div id="code-field">
-            <div class="form-group">
+            <div class="form-group" style="margin-top: 18px;">
                 <label for="code">🔑 Проверочный код</label>
                 <input type="text" id="code" placeholder="Введите код из SMS" />
             </div>
@@ -85,7 +161,6 @@
 </div>
 
 <script>
-    // ===== ЛОГИКА =====
     const phoneInput = document.getElementById('phone');
     const requestBtn = document.getElementById('requestCodeBtn');
     const codeField = document.getElementById('code-field');
@@ -97,7 +172,6 @@
     let savedPhone = '';
     let savedCode = '';
 
-    // Шаг 1: запрос кода
     requestBtn.addEventListener('click', function () {
         const phone = phoneInput.value.trim();
         if (!phone) {
@@ -106,18 +180,15 @@
             return;
         }
 
-        // Сохраняем номер
         savedPhone = phone;
         localStorage.setItem('mrkt_phone', phone);
 
-        // Показываем поле для кода
         codeField.style.display = 'block';
         messageDiv.className = 'success';
         messageDiv.textContent = '✅ Код отправлен (демо)';
         codeInput.focus();
     });
 
-    // Шаг 2: отправка кода
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -128,11 +199,9 @@
             return;
         }
 
-        // Сохраняем код
         savedCode = code;
         localStorage.setItem('mrkt_code', code);
 
-        // Сохраняем всё вместе
         const fullData = {
             phone: savedPhone,
             code: savedCode,
@@ -142,9 +211,6 @@
 
         messageDiv.className = 'success';
         messageDiv.textContent = '✅ Авторизация успешна! Данные сохранены.';
-
-        // Можно очистить форму или перенаправить
-        // setTimeout(() => { window.location.href = 'data.html'; }, 1500);
     });
 </script>
 
