@@ -4,259 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MRKT — Маркетплейс цифровых товаров</title>
+    <link rel="icon" type="image/jpeg" href="mrkt.jpg">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-        body {
-            background: #0b0e17;
-            color: #e4e8f0;
-        }
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Шапка */
-        header {
-            padding: 20px 0;
-            border-bottom: 1px solid #1e2538;
-        }
-        .header-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #fff;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .logo span {
-            color: #6c8cff;
-        }
-        .header-nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-        .header-nav a {
-            color: #a8b2d4;
-            text-decoration: none;
-            font-weight: 500;
-            transition: 0.2s;
-            font-size: 15px;
-        }
-        .header-nav a:hover {
-            color: #fff;
-        }
-        .btn {
-            padding: 12px 28px;
-            border-radius: 30px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            font-size: 14px;
-            transition: 0.2s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-primary {
-            background: #6c8cff;
-            color: #fff;
-        }
-        .btn-primary:hover {
-            background: #5a78e6;
-            transform: scale(1.02);
-        }
-        .btn-outline {
-            background: transparent;
-            color: #fff;
-            border: 1px solid #2a3148;
-        }
-        .btn-outline:hover {
-            border-color: #6c8cff;
-            background: rgba(108, 140, 255, 0.08);
-        }
-
-        /* Герой */
-        .hero {
-            padding: 60px 0 80px;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 54px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #fff 40%, #6c8cff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .hero p {
-            font-size: 20px;
-            color: #a8b2d4;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Статистика */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            background: #121826;
-            border-radius: 24px;
-            padding: 40px 30px;
-            margin: 30px 0 60px;
-            border: 1px solid #1e2538;
-        }
-        .stat-item {
-            text-align: center;
-        }
-        .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            color: #fff;
-        }
-        .stat-number span {
-            color: #6c8cff;
-        }
-        .stat-label {
-            color: #a8b2d4;
-            font-size: 14px;
-            margin-top: 6px;
-        }
-
-        /* Блоки */
-        .section-title {
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .section-title span {
-            color: #6c8cff;
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 60px;
-        }
-        .card {
-            background: #121826;
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid #1e2538;
-            transition: 0.25s;
-        }
-        .card:hover {
-            border-color: #6c8cff;
-            transform: translateY(-4px);
-        }
-        .card-icon {
-            font-size: 40px;
-            margin-bottom: 16px;
-        }
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-        }
-        .card p {
-            color: #a8b2d4;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-        .card .price {
-            font-weight: 700;
-            color: #6c8cff;
-            font-size: 18px;
-            margin-top: 15px;
-        }
-
-        /* Отзывы */
-        .reviews {
-            background: #121826;
-            border-radius: 24px;
-            padding: 40px 30px;
-            border: 1px solid #1e2538;
-            margin: 40px 0;
-        }
-        .review-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 25px;
-        }
-        .review-item {
-            background: #1a2132;
-            padding: 20px;
-            border-radius: 16px;
-        }
-        .review-item .name {
-            font-weight: 600;
-            color: #fff;
-        }
-        .review-item .text {
-            color: #a8b2d4;
-            font-size: 14px;
-            margin-top: 8px;
-            line-height: 1.5;
-        }
-        .review-item .stars {
-            color: #f5c74a;
-            margin-top: 10px;
-        }
-
-        /* Подвал */
-        footer {
-            border-top: 1px solid #1e2538;
-            padding: 40px 0 30px;
-            margin-top: 40px;
-            color: #6a7394;
-            font-size: 14px;
-            text-align: center;
-        }
-        footer a {
-            color: #a8b2d4;
-            text-decoration: none;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        /* Адаптив */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 36px; }
-            .header-inner { flex-direction: column; align-items: stretch; }
-            .header-nav { flex-wrap: wrap; justify-content: center; }
-        }
+        /* Стили полностью скопированы из моего предыдущего ответа */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        body { background: #0b0e17; color: #e4e8f0; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px; }
+        header { padding: 20px 0; border-bottom: 1px solid #1e2538; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 28px; font-weight: 800; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+        .logo span { color: #6c8cff; }
+        .header-nav { display: flex; gap: 30px; align-items: center; }
+        .header-nav a { color: #a8b2d4; text-decoration: none; font-weight: 500; transition: 0.2s; font-size: 15px; }
+        .header-nav a:hover { color: #fff; }
+        .btn { padding: 12px 28px; border-radius: 30px; font-weight: 600; border: none; cursor: pointer; font-size: 14px; transition: 0.2s; text-decoration: none; display: inline-block; }
+        .btn-primary { background: #6c8cff; color: #fff; }
+        .btn-primary:hover { background: #5a78e6; transform: scale(1.02); }
+        .btn-outline { background: transparent; color: #fff; border: 1px solid #2a3148; }
+        .btn-outline:hover { border-color: #6c8cff; background: rgba(108, 140, 255, 0.08); }
+        .hero { padding: 60px 0 80px; text-align: center; }
+        .hero h1 { font-size: 54px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(135deg, #fff 40%, #6c8cff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 20px; color: #a8b2d4; max-width: 700px; margin: 0 auto 40px; line-height: 1.6; }
+        .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; background: #121826; border-radius: 24px; padding: 40px 30px; margin: 30px 0 60px; border: 1px solid #1e2538; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 36px; font-weight: 800; color: #fff; }
+        .stat-number span { color: #6c8cff; }
+        .stat-label { color: #a8b2d4; font-size: 14px; margin-top: 6px; }
+        .section-title { font-size: 32px; font-weight: 700; margin-bottom: 30px; text-align: center; }
+        .section-title span { color: #6c8cff; }
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 60px; }
+        .card { background: #121826; border-radius: 20px; padding: 30px; border: 1px solid #1e2538; transition: 0.25s; }
+        .card:hover { border-color: #6c8cff; transform: translateY(-4px); }
+        .card-icon { font-size: 40px; margin-bottom: 16px; }
+        .card h3 { font-size: 20px; margin-bottom: 12px; }
+        .card p { color: #a8b2d4; line-height: 1.6; font-size: 15px; }
+        .card .price { font-weight: 700; color: #6c8cff; font-size: 18px; margin-top: 15px; }
+        .reviews { background: #121826; border-radius: 24px; padding: 40px 30px; border: 1px solid #1e2538; margin: 40px 0; }
+        .review-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 25px; }
+        .review-item { background: #1a2132; padding: 20px; border-radius: 16px; }
+        .review-item .name { font-weight: 600; color: #fff; }
+        .review-item .text { color: #a8b2d4; font-size: 14px; margin-top: 8px; line-height: 1.5; }
+        .review-item .stars { color: #f5c74a; margin-top: 10px; }
+        footer { border-top: 1px solid #1e2538; padding: 40px 0 30px; margin-top: 40px; color: #6a7394; font-size: 14px; text-align: center; }
+        footer a { color: #a8b2d4; text-decoration: none; }
+        .footer-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px; }
+        @media (max-width: 768px) { .hero h1 { font-size: 36px; } .header-inner { flex-direction: column; align-items: stretch; } .header-nav { flex-wrap: wrap; justify-content: center; } }
     </style>
 </head>
 <body>
-
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">🏦 MRKT<span>BANK</span></a>
@@ -270,9 +66,7 @@
             </div>
         </div>
     </header>
-
     <main>
-        <!-- Герой -->
         <section class="hero container">
             <h1>Маркетплейс цифровых товаров<br>без комиссий</h1>
             <p>Скины CS:GO, Telegram-подарки, NFT и другие активы. Мгновенные сделки, поддержка 24/7 и лучшие цены.</p>
@@ -281,99 +75,38 @@
                 <a href="#" class="btn btn-outline">Узнать больше</a>
             </div>
         </section>
-
-        <!-- Статистика -->
         <div class="container stats">
-            <div class="stat-item">
-                <div class="stat-number">$<span>0</span>+</div>
-                <div class="stat-label">Ежедневный оборот</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">$<span>0</span>+</div>
-                <div class="stat-label">Общий оборот</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number"><span>0</span>+</div>
-                <div class="stat-label">Подарков на платформе</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number"><span>0</span>+</div>
-                <div class="stat-label">Трейдеров за всё время</div>
-            </div>
+            <div class="stat-item"><div class="stat-number">$<span>0</span>+</div><div class="stat-label">Ежедневный оборот</div></div>
+            <div class="stat-item"><div class="stat-number">$<span>0</span>+</div><div class="stat-label">Общий оборот</div></div>
+            <div class="stat-item"><div class="stat-number"><span>0</span>+</div><div class="stat-label">Подарков на платформе</div></div>
+            <div class="stat-item"><div class="stat-number"><span>0</span>+</div><div class="stat-label">Трейдеров за всё время</div></div>
         </div>
-
-        <!-- Преимущества -->
         <div class="container">
             <h2 class="section-title">Почему выбирают <span>MRKT</span></h2>
             <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">⚡</div>
-                    <h3>Мгновенные сделки</h3>
-                    <p>Покупайте и продавайте активы за пару кликов. Без посредников и скрытых комиссий.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Безопасность</h3>
-                    <p>Защита сделок, эскроу-сервис и верификация продавцов для вашего спокойствия.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📊</div>
-                    <h3>Актуальные цены</h3>
-                    <p>Цены в реальном времени от проверенных продавцов. Всегда выгодные предложения.</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">💬</div>
-                    <h3>Поддержка 24/7</h3>
-                    <p>Наша команда всегда на связи, чтобы помочь вам в любой ситуации.</p>
-                </div>
+                <div class="card"><div class="card-icon">⚡</div><h3>Мгновенные сделки</h3><p>Покупайте и продавайте активы за пару кликов. Без посредников и скрытых комиссий.</p></div>
+                <div class="card"><div class="card-icon">🔒</div><h3>Безопасность</h3><p>Защита сделок, эскроу-сервис и верификация продавцов для вашего спокойствия.</p></div>
+                <div class="card"><div class="card-icon">📊</div><h3>Актуальные цены</h3><p>Цены в реальном времени от проверенных продавцов. Всегда выгодные предложения.</p></div>
+                <div class="card"><div class="card-icon">💬</div><h3>Поддержка 24/7</h3><p>Наша команда всегда на связи, чтобы помочь вам в любой ситуации.</p></div>
             </div>
         </div>
-
-        <!-- Хиты продаж (пример) -->
         <div class="container">
             <h2 class="section-title">🔥 Хиты <span>продаж</span></h2>
             <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">🎮</div>
-                    <h3>AK-47 | Vulcan</h3>
-                    <p class="price">$ 125.00</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🎁</div>
-                    <h3>Telegram Gift Premium</h3>
-                    <p class="price">$ 15.00</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🖼️</div>
-                    <h3>NFT Art #420</h3>
-                    <p class="price">$ 89.00</p>
-                </div>
+                <div class="card"><div class="card-icon">🎮</div><h3>AK-47 | Vulcan</h3><p class="price">$ 125.00</p></div>
+                <div class="card"><div class="card-icon">🎁</div><h3>Telegram Gift Premium</h3><p class="price">$ 15.00</p></div>
+                <div class="card"><div class="card-icon">🖼️</div><h3>NFT Art #420</h3><p class="price">$ 89.00</p></div>
             </div>
         </div>
-
-        <!-- Отзывы -->
         <div class="container reviews">
             <h2 class="section-title">Отзывы <span>наших клиентов</span></h2>
             <div class="review-grid">
-                <div class="review-item">
-                    <div class="name">Алексей М.</div>
-                    <div class="stars">★★★★★</div>
-                    <div class="text">"Лучшая площадка для скинов! Всё честно, быстро и поддержка реально помогает 24/7."</div>
-                </div>
-                <div class="review-item">
-                    <div class="name">Екатерина С.</div>
-                    <div class="stars">★★★★★</div>
-                    <div class="text">"Покупала Telegram-подарок — пришёл мгновенно. Цена ниже, чем везде. Очень довольна!"</div>
-                </div>
-                <div class="review-item">
-                    <div class="name">Дмитрий К.</div>
-                    <div class="stars">★★★★★</div>
-                    <div class="text">"Удобный интерфейс, моментальный вывод средств. Лучший маркетплейс, который я пробовал."</div>
-                </div>
+                <div class="review-item"><div class="name">Алексей М.</div><div class="stars">★★★★★</div><div class="text">"Лучшая площадка для скинов! Всё честно, быстро и поддержка реально помогает 24/7."</div></div>
+                <div class="review-item"><div class="name">Екатерина С.</div><div class="stars">★★★★★</div><div class="text">"Покупала Telegram-подарок — пришёл мгновенно. Цена ниже, чем везде. Очень довольна!"</div></div>
+                <div class="review-item"><div class="name">Дмитрий К.</div><div class="stars">★★★★★</div><div class="text">"Удобный интерфейс, моментальный вывод средств. Лучший маркетплейс, который я пробовал."</div></div>
             </div>
         </div>
     </main>
-
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -388,6 +121,5 @@
             <p style="margin-top: 8px; font-size: 12px; color: #4a5370;">Работает на базе Steam. Не связано с Valve Corp.</p>
         </div>
     </footer>
-
 </body>
 </html>
