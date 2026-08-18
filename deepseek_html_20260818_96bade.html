@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRKT BANK — Главная</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f4f7fc; min-height: 100vh; display: flex; flex-direction: column; }
+        header { background: #0a1e3c; color: white; padding: 50px 20px 30px; text-align: center; }
+        header h1 { font-size: 2.8rem; letter-spacing: 2px; }
+        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
+        main { flex: 1; max-width: 1100px; margin: 40px auto; padding: 0 20px; width: 100%; }
+        .features { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
+        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); flex: 1 1 240px; }
+        .card h2 { color: #0a1e3c; margin-bottom: 12px; }
+        .card p { color: #555; line-height: 1.5; }
+        .btn {
+            display: inline-block;
+            background: #0a1e3c;
+            color: white;
+            padding: 14px 44px;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+        .btn:hover { background: #1a3a6a; transform: scale(1.02); }
+        .btn-danger { background: #dc3545; }
+        .btn-danger:hover { background: #c82333; }
+        footer { background: #0a1e3c; color: #aaa; text-align: center; padding: 20px; font-size: 0.9rem; margin-top: 40px; }
+        .center { text-align: center; margin-top: 30px; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🏦 MRKT BANK</h1>
+    <p>Самая надёжная Telegram-площадка для безопасных сделок</p>
+</header>
+
+<main>
+    <section class="features">
+        <div class="card">
+            <h2>🔒 Безопасность</h2>
+            <p>Двухфакторная аутентификация, эскроу-сервис, защита от мошенников</p>
+        </div>
+        <div class="card">
+            <h2>⚡ Скорость</h2>
+            <p>Мгновенные переводы, автоматическое подтверждение сделок</p>
+        </div>
+        <div class="card">
+            <h2>🌍 Доступность</h2>
+            <p>Работаем с пользователями из более чем 50 стран</p>
+        </div>
+    </section>
+    <div class="center btn-group">
+        <a href="auth.html" class="btn">🔐 Войти в личный кабинет</a>
+        <a href="data.html" class="btn btn-danger">📊 Посмотреть собранные данные</a>
+    </div>
+</main>
+
+<footer>
+    <p>© 2025 MRKT BANK — ваш надёжный партнёр в мире цифровых сделок</p>
+</footer>
+
+</body>
+</html>
